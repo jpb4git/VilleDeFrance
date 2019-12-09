@@ -4,43 +4,75 @@ Projet  python
 
 ## Getting Started
 
-installation de python 3.7.4 
-
-installation de pip
-
-installation de pipenv
 
 
 ### Prerequisites
 
+python3.7
+pip
+pipenv
+jupyter
+
+
+### Installing
+
+ 
+
 installation de python 3.7.4 
 
+go to /usr/src  and wget the desired pythonX.x version  
+```
+cd /usr/src
+sudo wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
+```
+
+tar the downloaded file
+```
+sudo tar xzf Python-3.7.4.tgz
+```
+
+go to python folder then we enable the python optimisation
+Compile source with [Make]
+then we check the python installation   
+```
+cd Python-3.7.4
+sudo ./configure --enable-optimizations
+sudo make altinstall
+ python3.7 -V
+```
+
 installation de pip
+```
+ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+ sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+ python get-pip.py
+ sudo python get-pip.py
+```
+
 
 installation de pipenv
 
 
+create project with pipenv
+
+
+
+don't forget to navigate to the correct folder for your new project
+then
 ```
-Give examples
+python3.7 -m pipenv shell
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+installation jupyter
+when you 'r in your env (shell)
+you can run this command to install jupyter 
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+pipenv install jupiter
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+now we can launch Jupyter  notebook application with 
+```
+jupiter notebook
+```
 
 ## Running the tests
 
@@ -82,9 +114,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **jpb4GIt** - *Initial work* - [PurpleBooth](https://github.com/jpb4git/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
@@ -94,5 +126,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Hat tip to anyone whose code was used
 * Inspiration
-* etc
+
 
