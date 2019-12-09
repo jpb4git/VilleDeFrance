@@ -77,6 +77,13 @@ now we can launch Jupyter  notebook application with
 ```
 jupiter notebook
 ```
+## Dependencies
+
+[packages]
+>jupyter 
+>pandas 
+>matplotlib 
+>csv 
 
 ## Running the tests
 
