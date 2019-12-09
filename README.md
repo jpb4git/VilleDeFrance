@@ -54,9 +54,15 @@ installation de pipenv
 
 
 create project with pipenv
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 9649301965863c608bd6ad83aa4f26ceeadfdbb5
 don't forget to navigate to the correct folder for your new project
 then
 ```
