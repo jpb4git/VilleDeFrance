@@ -2,23 +2,29 @@
 
 Projet  python 
 
-## Getting Started
-
+#### Getting Started
+> The overriding design goal for this project
+> is to familiarize student to dev with python
+> and python environment. 
 
 
 ### Prerequisites
 
-python3.7
-pip
-pipenv
-jupyter
+This project is currently extended with the following prerequisites. Instructions on how to install them in your own application are explained below.
+
+| PREREQUISITES |
+| ------ |
+| python3.7 |
+| pip|
+| pipenv | 
+| jupyter | 
+| git | 
+
 
 
 ### Installing
 
- 
-
-installation de python 3.7.4 
+>installation de python 3.7.4 
 
 go to /usr/src  and wget the desired pythonX.x version  
 ```
@@ -41,7 +47,7 @@ sudo make altinstall
  python3.7 -V
 ```
 
-installation de pip
+>installation de pip
 ```
  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
  sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -50,7 +56,7 @@ installation de pip
 ```
 
 
-installation de pipenv
+>installation de pipenv
 
 
 create project with pipenv
@@ -60,7 +66,7 @@ then
 ```
 python3.7 -m pipenv shell
 ```
-installation jupyter
+>installation jupyter
 when you 'r in your env (shell)
 you can run this command to install jupyter 
 ```
@@ -99,10 +105,6 @@ jupiter notebook
 
 * [Jupiter](https://jupyter.org/documentation) - The web framework used
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
@@ -121,5 +123,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Hat tip to anyone whose code was used
 * Inspiration
-
 
