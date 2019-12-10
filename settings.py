@@ -1,0 +1,1 @@
+PATH_CSV_FILE = "datas/villes_france.csv"

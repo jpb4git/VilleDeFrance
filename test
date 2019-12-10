@@ -1,0 +1,17 @@
+# Load the Pandas libraries with alias 'pd' 
+import pandas as pd 
+
+
+data = pd.read_csv("villes_france.csv" , names = ['A'  + str(i) for i in range(26)])  
+# Preview the first 5 lines of the loaded data 
+
+data.sort_values(data.columns[15]).head()
+
+
+#data = pd.read_csv("villes_france.csv" , names = ['A'  + str(i) for i in range(26)])  
+print(data['A5'])
+print(data['A15'])
+x = data['A5']
+y = data['A15']
+plt.scatter(x, y)
+plt.show()
