@@ -1,0 +1,13 @@
+   A0                     A1                     A2  ...       A23    A24     A25
+1   1                   ozan                   OZAN  ...  462330.0  170.0   205.0
+2   1  cormoranche-sur-saone  CORMORANCHE-SUR-SAONE  ...  461427.0  168.0   211.0
+3   1              plagne-01                 PLAGNE  ...  461131.0  560.0   922.0
+4   1                tossiat                TOSSIAT  ...  460828.0  244.0   501.0
+5   1               pouillat               POUILLAT  ...  461938.0  333.0   770.0
+6   1                torcieu                TORCIEU  ...  455521.0  257.0   782.0
+7   1              replonges              REPLONGES  ...  461837.0  169.0   207.0
+8   1              corcelles              CORCELLES  ...  460208.0  780.0  1081.0
+9   1                  peron                  PERON  ...  461124.0  411.0  1501.0
+10  1               relevant               RELEVANT  ...  460525.0  235.0   282.0
+
+[10 rows x 26 columns]
