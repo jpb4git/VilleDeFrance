@@ -1,6 +1,7 @@
 import settings 
 import pandas as pd 
 from apps.cities import cities
+import numpy as np 
 '''
 def load_data_school() :
    
@@ -116,3 +117,38 @@ def get_average(highschools):
     highschools_extracted_columns = extract_highschools_columns(highschools_grouped_cities)
     return average_by_insee(highschools_extracted_columns)
 #-------------------------------------------------
+
+def update_field(col, data, criteria, updateValue):
+    """
+    col : column to patch 
+    data : dataset
+    criteria : array dep 
+    updateValue :  
+        """
+    result = data.copy()
+    
+    result.update({col :    np.where (
+            data[col].isin(criteria),
+            updateValue,
+            data[col]
+        )})
+    
+    return result    
+
+
+
+def borough_concatenation(data):
+
+    dataW = regroupDistrict(data,'Code commune')
+    result = dataW.groupby(['Code commune'] , as_index=False).agg({'Effectif de seconde' : 'sum'  })
+
+    return result
+
+
+def regroupDistrict (data,column_name) :
+
+    for key , city in settings.CITIES.items() : 
+       data = update_field(column_name, data, city['arr'], city['target']) 
+
+
+    return data.groupby([column_name] , as_index=False).agg({'Effectif de seconde' : 'sum'  })        

@@ -27,22 +27,32 @@ def test_reduced_data_length():
     averages = school.get_average(data)
     assert len(averages) == 1157
 '''
-def test_lyon_borough_concatenation():
-    
+def test_borough_concatenation():
    
     data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL)
 
-    data.update({'Code commune' :    np.where (
-        data['Code commune'].isin(settings.boroughLyon),
-        '69123',
-        data['Code commune']
-    )})
-    
-    test = data.groupby(['Code commune'] , as_index=False).agg({'Effectif de seconde' : 'sum'  })
+    test  = school.borough_concatenation(data)
 
     assert  len(test.loc[test['Code commune'] == "69123" ]) == 1
-    
     assert  len(test.loc[test['Code commune'] == "69386" ]) == 0
+
+    assert  len(test.loc[test['Code commune'] == "75100" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "75101" ]) == 0
+
+    assert  len(test.loc[test['Code commune'] == "13200" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "13201" ]) == 0
     
-    
-    
+def test_regroup_District():
+
+    data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL)
+    test  = school.regroupDistrict(data,'Code commune')
+
+    assert  len(test.loc[test['Code commune'] == "69123" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "69386" ]) == 0
+
+    assert  len(test.loc[test['Code commune'] == "75100" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "75101" ]) == 0
+
+    assert  len(test.loc[test['Code commune'] == "13200" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "13201" ]) == 0
+ 
