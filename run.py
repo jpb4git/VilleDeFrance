@@ -1,43 +1,27 @@
 from settings import PATH_CSV_FILE
-import pandas as pd 
-from apps.cities.cities import load_plot
-
+from settings import PATH_CSV_FILE_SCHOOL
+from apps.cities.cities import loadData
+from apps.school.school import groupSchoolByInsee,groupSchoolMeanByTown,runGroupSchoolMeanByTown
 '''
-def load_plot(path) :
-    
-    # Load the Pandas libraries with alias 'pd' 
-    data = pd.read_csv(path , names = ['A'  + str(i) for i in range(26)])  
-    #print(data) 
-   
-    print(data['A5'])
-    print(data['A14'])
-    x = data['A5']
-    y = data['A14']
-    plt.scatter(x, y)
-    plt.show()
-   
-    return data.head(10)
-'''
-
 def golden_master_state() :
-    '''
-    golden_data =  load_plot(PATH_CSV_FILE)
+    
+   # golden_data =  load_plot(PATH_CSV_FILE)
     #golden_data = golden_data.to_string()
-    f= open("goldenpanda.txt","w+")
-    f.write(golden_data.head(10).to_string())
-    f.close
-    '''
+    #f= open("goldenpanda.txt","w+")
+    #f.write(golden_data.head(10).to_string())
+    #f.close
+    
     print('entering statement')
     golden_data =  load_plot(PATH_CSV_FILE)
     golden_data = golden_data.to_string()
     f= open("goldenData.txt","w+")
     f.write(golden_data)
     f.close
-    
+'''    
 
 
 if __name__ == '__main__':
-  
-    # golden_master_state()
-    # load_plot(PATH_CSV_FILE)
-    selectOneTownByName('paris')
+    #golden_master_state()
+    loadData(PATH_CSV_FILE)
+    #selectOneTownByName('paris')
+    #runGroupSchoolMeanByTown() 
