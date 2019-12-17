@@ -152,3 +152,7 @@ def regroupDistrict (data,column_name) :
 
 
     return data.groupby([column_name] , as_index=False).agg({'Effectif de seconde' : 'sum'  })        
+
+
+def mergeDataframes (leftDF, rightDF, column_name) :
+    return pd.merge(leftDF, rightDF, on=column_name)

@@ -68,7 +68,7 @@ def test_mergeCitiesSchool():
     #print(insee_averages_schools['Code commune'])
    
 
-    merge_result = pd.merge(insee_averages_schools, Rcities, on='Code commune')
+    merge_result = school.mergeDataframes(insee_averages_schools, Rcities, 'Code commune')
     #print(merge_result['Ville'])
    
     
@@ -77,4 +77,6 @@ def test_mergeCitiesSchool():
 
     assert  len(merge_result.loc[merge_result['Code commune'] == "75056" ]) == 1 
     assert  len(sorted_by_population_results.loc[sorted_by_population_results['Code commune'] == "75057" ]) == 0
+
+# def test_mergeCitiesSchool():
  
