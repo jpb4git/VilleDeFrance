@@ -1,4 +1,5 @@
 from apps.school import school
+from apps.cities import cities
 import settings
 import pandas as pd 
 import numpy as np 
@@ -36,10 +37,10 @@ def test_borough_concatenation():
     assert  len(test.loc[test['Code commune'] == "69123" ]) == 1
     assert  len(test.loc[test['Code commune'] == "69386" ]) == 0
 
-    assert  len(test.loc[test['Code commune'] == "75100" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "75056" ]) == 1
     assert  len(test.loc[test['Code commune'] == "75101" ]) == 0
 
-    assert  len(test.loc[test['Code commune'] == "13200" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "13055" ]) == 1
     assert  len(test.loc[test['Code commune'] == "13201" ]) == 0
     
 def test_regroup_District():
@@ -50,9 +51,30 @@ def test_regroup_District():
     assert  len(test.loc[test['Code commune'] == "69123" ]) == 1
     assert  len(test.loc[test['Code commune'] == "69386" ]) == 0
 
-    assert  len(test.loc[test['Code commune'] == "75100" ]) == 1
-    assert  len(test.loc[test['Code commune'] == "75101" ]) == 0
+    assert  len(test.loc[test['Code commune'] == "75056" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "75857" ]) == 0
 
-    assert  len(test.loc[test['Code commune'] == "13200" ]) == 1
-    assert  len(test.loc[test['Code commune'] == "13201" ]) == 0
+    assert  len(test.loc[test['Code commune'] == "13055" ]) == 1
+    assert  len(test.loc[test['Code commune'] == "13556" ]) == 0
+ 
+def test_mergeCitiesSchool():
+
+    Rcities = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
+    Rcities.rename(columns={'4':'Ville', '9':'Code commune', '13':'Population'}, inplace = True) # renommer colonnes
+    #print(Rcities['Code commune'])
+    
+    highschools_data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL) # récup csv lycées
+    insee_averages_schools = school.regroupDistrict(highschools_data,'Code commune')                                       
+    #print(insee_averages_schools['Code commune'])
+   
+
+    merge_result = pd.merge(insee_averages_schools, Rcities, on='Code commune')
+    #print(merge_result['Ville'])
+   
+    
+    sorted_by_population_results = cities.sort_cities_by_population(merge_result, 'Population')
+    print(sorted_by_population_results['Ville'])
+
+    assert  len(merge_result.loc[merge_result['Code commune'] == "75056" ]) == 1 
+    assert  len(sorted_by_population_results.loc[sorted_by_population_results['Code commune'] == "75057" ]) == 0
  
