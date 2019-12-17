@@ -135,8 +135,6 @@ def update_field(col, data, criteria, updateValue):
     
     return result    
 
-
-
 def borough_concatenation(data):
 
     dataW = regroupDistrict(data,'Code commune')
@@ -164,4 +162,7 @@ def add_calculated_column(data):
     data['Score'] = data.apply(lambda col: (int( col['Taux Brut de Réussite Total séries'] ) + ( int(col['Taux_Mention_brut_toutes_series']) * 2) )  / 3, axis=1)
     return data
 
+def sortByPopulation(data):
+    
+    return data
     
