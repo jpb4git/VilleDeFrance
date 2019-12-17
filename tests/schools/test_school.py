@@ -60,7 +60,8 @@ def test_regroup_District():
 def test_mergeCitiesSchool():
 
     Rcities = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
-    Rcities.rename(columns={'4':'Ville', '9':'Code commune', '13':'Population'}, inplace = True) # renommer colonnes
+    col_map = {'4':'Ville', '9':'Code commune', '13':'Population'}
+    Rcities = school.renameColDataframe(Rcities, col_map)
     #print(Rcities['Code commune'])
     
     highschools_data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL) # récup csv lycées

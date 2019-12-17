@@ -150,8 +150,11 @@ def regroupDistrict (data,column_name) :
     for key , city in settings.CITIES.items() : 
        data = update_field(column_name, data, city['arr'], city['target']) 
 
-
     return data.groupby([column_name] , as_index=False).agg({'Effectif de seconde' : 'sum'  })        
+
+
+def renameColDataframe (data, columns_map) :
+    return data.rename(columns=columns_map, inplace = False) # rename columns
 
 
 def mergeDataframes (leftDF, rightDF, column_name) :
