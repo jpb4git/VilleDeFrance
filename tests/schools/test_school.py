@@ -79,5 +79,24 @@ def test_mergeCitiesSchool():
     assert  len(merge_result.loc[merge_result['Code commune'] == "75056" ]) == 1 
     assert  len(sorted_by_population_results.loc[sorted_by_population_results['Code commune'] == "75057" ]) == 0
 
-# def test_mergeCitiesSchool():
- 
+def test_add_calculated_column():
+    '''
+    Rcities = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
+    col_map = {'4':'Ville', '9':'Code commune', '13':'Population'}
+    Rcities = school.renameColDataframe(Rcities, col_map)
+    highschools_data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL) # récup csv lycées
+    insee_averages_schools = school.regroupDistrict(highschools_data,'Code commune')                                       
+    merge_result = school.mergeDataframes(insee_averages_schools, Rcities, 'Code commune')
+    sorted_by_population_results = cities.sort_cities_by_population(merge_result, 'Population')
+    scored_schools = school.add_calculated_column(sorted_by_population_results)
+    '''
+    
+    data = pd.DataFrame({
+            
+            'Taux Brut de Réussite Total séries' : ['10','8'], 
+            'Taux_Mention_brut_toutes_series' : ['10','5' ]
+            })
+    result  = school.add_calculated_column(data) 
+    #assert 1 == 3 
+    assert result.loc[0]['Score'] == 10
+    assert result.loc[1]['Score'] == 6

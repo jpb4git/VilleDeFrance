@@ -159,3 +159,9 @@ def renameColDataframe (data, columns_map) :
 
 def mergeDataframes (leftDF, rightDF, column_name) :
     return pd.merge(leftDF, rightDF, on=column_name)
+
+def add_calculated_column(data):
+    data['Score'] = data.apply(lambda col: (int( col['Taux Brut de Réussite Total séries'] ) + ( int(col['Taux_Mention_brut_toutes_series']) * 2) )  / 3, axis=1)
+    return data
+
+    
