@@ -1,7 +1,7 @@
 from apps.utils import utils
 import settings 
-from apps.cities import cities , utils as cityUtils
-from apps.school import school , utils as schoolUtils
+from apps.cities import cities , controller as cityController
+from apps.school import school , controller as schoolController
 from matplotlib import pyplot
 from peewee import *
 import argparse
@@ -37,10 +37,10 @@ def setRoute() :
        db_setting()
   
     if args.action == "save_city":
-        cityUtils.import_csv_table()
+        cityController.import_csv_table()
 
     if args.action == "save_school":
-        schoolUtils.import_school_csv_table()
+        schoolController.import_school_csv_table()
 
     if args.action == "show_school":
-        schoolUtils.read_data_from_table()
+        schoolController.read_data_from_table()

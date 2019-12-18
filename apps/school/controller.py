@@ -58,8 +58,8 @@ def read_data_from_table():
             City.longitude
             ]
 
-    query = School.select(*listColumn).join(City).order_by(-School.globalRating)
-   
+    #query = School.select(*listColumn).join(City).order_by(-School.globalRating)
+    query = School.select(School,City).join(City).order_by(-School.globalRating)
     # query to df
     dfschool =  pd.DataFrame(list(query.dicts()))
 
