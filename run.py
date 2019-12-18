@@ -5,6 +5,7 @@ from apps.school import school , utils as schoolUtils
 from matplotlib import pyplot
 from peewee import *
 import argparse
+from apps.router.router import setRoute
 
 
   
@@ -36,33 +37,6 @@ def init():
     print(result.head(50))
 
 if __name__ == '__main__':
-  parser = argparse.ArgumentParser()
-  parser.add_argument(
-        "action",
-        help="Choose an action to execute",
-        nargs="?",
-        choices=[
-            "school",
-            "db",
-            "save_city",
-            "show_city",
-            "save_school",
-            "show_school",
-        ],
-    )
-  args = parser.parse_args()
-
-  if args.action == "school":
-        init()
-
-  if args.action == "db":
-       db_setting()
   
-  if args.action == "save_city":
-    cityUtils.import_csv_table()
-
-  if args.action == "save_school":
-    schoolUtils.import_school_csv_table()
-
-       
-
+  setRoute()
+  

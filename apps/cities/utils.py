@@ -32,3 +32,4 @@ def import_csv_table():
     print('called the right thing !!!')
 
     db.close()
+
