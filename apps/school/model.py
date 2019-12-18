@@ -1,9 +1,12 @@
+from  connect.connect import db
+from peewee import *
+from apps.cities.model  import City
+
 class School(Model):
-    insee = ForeignKeyField(towns, related_name='fk_school')
-    name = TextField()
-    globalRating : DecimalField()
-    successRate : DecimalField()
-    mentionRate : DecimalField()
+    insee = ForeignKeyField(City, related_name='fk_school')
+    globalRating = DecimalField(null=True)
+    successRate = DecimalField(null=True)
+    mentionRate = DecimalField(null=True)
     
     class Meta:
         database = db

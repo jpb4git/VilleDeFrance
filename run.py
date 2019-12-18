@@ -61,5 +61,8 @@ if __name__ == '__main__':
   if args.action == "save_city":
     cityUtils.import_csv_table()
 
+  if args.action == "save_school":
+    schoolUtils.import_school_csv_table()
+
        
 

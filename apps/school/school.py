@@ -142,10 +142,18 @@ def update_field(col, data, criteria, updateValue):
     
     return result    
 
+# To trash but to test before
 def borough_concatenation(data):
 
     dataW = regroupDistrict(data,'Code commune')
     result = dataW.groupby(['Code commune'] , as_index=False).agg({'Effectif de seconde' : 'sum'  })
+
+    return result
+
+def borough_concatenation_school(data):
+
+    dataW = regroupDistrict(data,'Code commune')
+    result = dataW.groupby(['Code commune'] , as_index=False).mean()
 
     return result
 
