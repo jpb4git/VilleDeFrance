@@ -84,11 +84,14 @@ def mergeSchoolAndCitiesByInsee():
 '''
 
 #-------------------------------------------------
+
 def read_highschools_csv_data(path):
     data = pd.read_csv(path, low_memory=False, sep=";")
+    data['Taux_Mention_brut_toutes_series'] = data['Taux_Mention_brut_toutes_series'].astype(float)
+    data['Taux Brut de Réussite Total séries'] = data['Taux Brut de Réussite Total séries'].astype(float)
     #print(data.head().to_string())
     return data
-
+'''
 def group_cities_districts(highschools):
     """
         function return a pandas dataFrame of distinct town
@@ -104,9 +107,11 @@ def extract_highschools_columns(highschools):
     return highschools_df.filter(items=['Code commune', 'Taux Brut de Réussite Total séries'])
 
 def average_by_insee(highschools):
-    print(highschools)
-    data = highschools.groupby(['Code commune']).mean()
-    #print(data)
+    print(highschools.head())
+    data = highschools.copy()
+    
+    data = data.groupby(['Code commune']).mean()
+    print(data.head())
     return data
 
 def get_average(highschools):
@@ -115,7 +120,9 @@ def get_average(highschools):
     """
     highschools_grouped_cities = group_cities_districts(highschools)
     highschools_extracted_columns = extract_highschools_columns(highschools_grouped_cities)
+    print(highschools_extracted_columns.head(10))
     return average_by_insee(highschools_extracted_columns)
+'''
 #-------------------------------------------------
 
 def update_field(col, data, criteria, updateValue):
@@ -144,22 +151,25 @@ def borough_concatenation(data):
 
 
 def regroupDistrict (data,column_name) :
-
     for key , city in settings.CITIES.items() : 
        data = update_field(column_name, data, city['arr'], city['target']) 
 
-    return data.groupby([column_name] , as_index=False).agg({'Effectif de seconde' : 'sum'  })        
+    # data = data.groupby([column_name] , as_index=False).agg({'Taux Brut de Réussite Total séries' : 'mean', 'Taux_Mention_brut_toutes_series' : 'mean'})
+    data = data.groupby([column_name] , as_index=False).mean()
+    return data
 
-
+'''
 def renameColDataframe (data, columns_map) :
     return data.rename(columns=columns_map, inplace = False) # rename columns
-
+'''
 
 def mergeDataframes (leftDF, rightDF, column_name) :
     return pd.merge(leftDF, rightDF, on=column_name)
 
 def add_calculated_column(data):
-    data['Score'] = data.apply(lambda col: (int( col['Taux Brut de Réussite Total séries'] ) + ( int(col['Taux_Mention_brut_toutes_series']) * 2) )  / 3, axis=1)
+    
+    data['Score'] = ( data['Taux Brut de Réussite Total séries']  +  data['Taux_Mention_brut_toutes_series']  ) / 10
+    #data['Score'] = data.apply(lambda col: (int( col['Taux Brut de Réussite Total séries'] ) + ( int(col['Taux_Mention_brut_toutes_series']) * 2) )  / 3, axis=1)
     return data
 
 def sortByPopulation(data):

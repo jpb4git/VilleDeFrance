@@ -1,33 +1,37 @@
-from settings import PATH_CSV_FILE
-from settings import PATH_CSV_FILE_SCHOOL
-from apps.cities.cities import loadData
-from apps.school.school import groupSchoolByInsee,groupSchoolMeanByTown,runGroupSchoolMeanByTown
-'''
-def golden_master_state() :
+from apps.utils import utils
+import settings 
+from apps.cities import cities
+from apps.school import school
+from matplotlib import pyplot
+  
+def init():
+    '''
+    Launcher app  
+
+    '''
+    fullCities = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
+    fullCities = utils.renameColDataframe(fullCities,{'4':'Ville', '9':'Code commune', '13':'Population'})
+    selectionCities = fullCities[['Ville', 'Code commune', 'Population']]
+
+    highschools_data = school.read_highschools_csv_data(settings.PATH_CSV_FILE_SCHOOL) 
+
+    big_Cities = utils.sort_cities_by_field(selectionCities, 'Population').head(50)
+    print(big_Cities)
+    schoolByDistrict  = school.regroupDistrict(highschools_data,'Code commune')
+
+    merge_result = school.mergeDataframes(schoolByDistrict, big_Cities, 'Code commune')
     
-   # golden_data =  load_plot(PATH_CSV_FILE)
-    #golden_data = golden_data.to_string()
-    #f= open("goldenpanda.txt","w+")
-    #f.write(golden_data.head(10).to_string())
-    #f.close
+    result1  = school.add_calculated_column(merge_result)
+    result = utils.sort_cities_by_field(result1, 'Score')
+    result.head(100).plot.bar(x='Ville', y='Score', figsize=(12,12))
+    #pyplot.show()
     
-    print('entering statement')
-    golden_data =  load_plot(PATH_CSV_FILE)
-    golden_data = golden_data.to_string()
-    f= open("goldenData.txt","w+")
-    f.write(golden_data)
-    f.close
-'''    
+    
+    
+    print(result.head(50))
+   
 
 
 if __name__ == '__main__':
-  
-    sorted_cities = pds.DataFrame(sorted_cities) # convertir villes en dataframe
-    sorted_cities.rename(columns={'4':'Ville', '9':'Code commune', '13':'Population'}, inplace = True) # renommer colonnes
+  init()
 
-    highschools_data = highschools.read_highschools_csv_data(settings.highschools_csv_path) # récup csv lycées
-    insee_averages = highschools.get_average(highschools_data)                                       
-                                                   
-    merge_result = pds.merge(insee_averages, sorted_cities[['Ville', 'Code commune', 'Population']], on='Code commune')
-    sorted_by_population_results = cities.sort_cities_by_population(merge_result, 'Population')
-    print(sorted_by_population_results)
