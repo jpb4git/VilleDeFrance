@@ -1,20 +1,22 @@
 import settings 
 import pandas as pd 
 from apps.cities import cities
+from apps.utils import utils
 import numpy as np 
 
 def read_doctors_csv_data(path):
     data = pd.read_csv(path, low_memory=False, sep=",")
     data = data[['c_depcom']]
-    return data
+    
+    return utils.renameColDataframe(data, {'c_depcom' : 'city'})
 
 
 # To trash but to test before
 def borough_concatenation(data):
 
-    dataW = regroupDistrict(data,'c_depcom')
+    dataW = regroupDistrict(data,'city')
 
-    result = dataW.groupby(['c_depcom'] , as_index=False).sum()
+    result = dataW.groupby(['city'] , as_index=False).sum()
 
     return result
 

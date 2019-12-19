@@ -1,6 +1,7 @@
 from apps.cities import cities
+from apps.utils import utils
 import settings
-'''
+
 def test_csv_loading():
     data = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
     assert (data.iloc[0][2]) == "OZAN"
@@ -8,6 +9,5 @@ def test_csv_loading():
 
 def test_sorting():
     data = cities.read_cities_csv_data(settings.PATH_CSV_FILE)
-    sorted_cities = cities.sort_cities_by_population(data, '13')
+    sorted_cities = utils.sort_cities_by_field(data, '13')
     assert (sorted_cities.iloc[0][2]) == "PARIS"
-'''

@@ -22,7 +22,7 @@ def test_borough_concatenation():
     # testCount = test.loc[test['c_depcom'] == "75056"]
     # print(testCount.iloc[0]['countDoctor'])
     
-    assert   test.loc[test['c_depcom'] == "75056"].iloc[0]['countDoctor'] == 1498
+    assert   test.loc[test['city'] == "75056"].iloc[0]['countDoctor'] == 1498
     
 
 

@@ -2,6 +2,7 @@ from apps.utils import utils
 import settings 
 from apps.cities import cities , controller as cityController
 from apps.school import school , controller as schoolController
+from apps.doctors import doctors , controller as doctorController
 from matplotlib import pyplot
 from peewee import *
 import argparse
@@ -26,6 +27,9 @@ def setRoute() :
             "show_city",
             "save_school",
             "show_school",
+            "save_doctor",
+            "show_doctor",
+
         ],
     )
     args = parser.parse_args()
@@ -44,3 +48,9 @@ def setRoute() :
 
     if args.action == "show_school":
         schoolController.read_data_from_table()
+
+    if args.action == "save_doctor":
+        doctorController.import_doctors_csv_table()
+
+    if args.action == "show_doctor":
+        doctorController.read_data_from_table()
