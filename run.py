@@ -1,8 +1,3 @@
-from apps.utils import utils
-import settings 
-from matplotlib import pyplot
-from peewee import *
-import argparse
 from apps.router.router import setRoute
 
 

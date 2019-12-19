@@ -18,6 +18,7 @@ def import_doctors_csv_table():
 
     dataW = doctors.regroupDistrict(dfDoctors,'city')
     result = dataW.groupby(['city'] , as_index=False).sum()
+    
 
     # df to dict 
     DictDoctors =  result.to_dict(orient='records')
@@ -37,26 +38,24 @@ def import_doctors_csv_table():
 
 def read_data_from_table():
    
-    
-    listColumn = [ School.city,
-            School.globalRating,
-            School.successRate,
-            School.mentionRate,
-            City.name,City.population,
-            City.latitude,
-            City.longitude
-            ]
 
-    #query = School.select(*listColumn).join(City).order_by(-School.globalRating)
-    query = School.select(School,City).join(City).order_by(-School.globalRating)
+    query = Doctor.select(Doctor,City).join(City)
     # query to df
-    dfschool =  pd.DataFrame(list(query.dicts()))
+    dfDoctors =  pd.DataFrame(list(query.dicts()))
+    #print(dfDoctors)
+    
+    dfDoctors['rate'] =  dfDoctors['population'] / dfDoctors['countDoctor']
 
-    # print 
-    #print(dfschool)
+    dfDoctors['rate'] = dfDoctors['rate'].astype(float)
+    dfDoctors['countDoctor'] = dfDoctors['countDoctor'].astype(float)
+    dfDoctors.rate = dfDoctors.rate.round(2)
+    dfDoctors = dfDoctors.sort_values(by='rate', ascending=False) 
+    
+    print(dfDoctors)
+   
+    dfDoctors['population'] /= 10
+    dfDoctors['countDoctor'] *= 5
+    dfDoctors.plot.bar(x="name" , y=["rate", "countDoctor", "population"])
 
-    # plot
-    dfschool['globalRating'] = dfschool['globalRating'].astype(float) 
-    dfschool.plot.bar(x="name" , y="globalRating")
     pyplot.show()
     

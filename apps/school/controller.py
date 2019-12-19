@@ -63,6 +63,7 @@ def read_data_from_table():
     # query to df
     dfschool =  pd.DataFrame(list(query.dicts()))
 
+
     # print 
     #print(dfschool)
 

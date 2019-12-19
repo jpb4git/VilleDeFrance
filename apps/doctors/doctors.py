@@ -40,6 +40,10 @@ def update_field(col, data, criteria, updateValue):
     
     return result    
 
-def add_calculated_column(data): 
-    data['countDoctor'] = 1
+def add_calculated_column(data, colname): 
+    data[colname] = 1
+    return data
+
+def add_calculated_rate_column(data, colname): 
+    data[colname] = data['population'] / data['countDoctors']
     return data
