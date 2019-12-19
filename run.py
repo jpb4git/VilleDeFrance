@@ -6,8 +6,6 @@ import argparse
 from apps.router.router import setRoute
 
 
-  
-
 def init():
     '''
     Launcher app  

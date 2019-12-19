@@ -64,7 +64,7 @@ def read_data_from_table():
     dfschool =  pd.DataFrame(list(query.dicts()))
 
     # print 
-    print(dfschool)
+    #print(dfschool)
 
     # plot
     dfschool['globalRating'] = dfschool['globalRating'].astype(float) 

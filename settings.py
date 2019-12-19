@@ -1,5 +1,7 @@
 PATH_CSV_FILE = "datas/villes_france.csv"
 PATH_CSV_FILE_SCHOOL = "datas/schools.csv"
+PATH_CSV_FILE_DOCTORS = "datas/doctors.csv"
+
 CITIES = {
     'Paris'  : 
         { 'arr' :['75101','75102','75103','75104','75105','75106','75107','75108','75109','75110','75111','75112','75113','75114'],

@@ -3,12 +3,13 @@ import settings
 from apps.cities.cities import read_cities_csv_data  
 from apps.cities.model  import City
 from apps.utils.utils import renameColDataframe , sort_cities_by_field
+
+
 def import_csv_table(): 
     
-
     # import csv cities
     dfCities = read_cities_csv_data(settings.PATH_CSV_FILE)    
-    dfCities =  sort_cities_by_field(dfCities,'13').head(50)
+    dfCities =  sort_cities_by_field(dfCities,'13').head(51)
     # connection db 
     db.connect()
     
@@ -19,7 +20,7 @@ def import_csv_table():
     City.create_table()    
     
     #rename columns
-    dfCities = renameColDataframe(dfCities,{'4':'name', '9':'insee', '13':'population','17' : 'longitude','18' : 'latitude'})    
+    dfCities = renameColDataframe(dfCities,{'4':'name', '9':'insee', '16':'population','17' : 'longitude','18' : 'latitude'})    
     dfCities = dfCities[['name','insee','population','longitude','latitude']]
 
     # df to dict 
