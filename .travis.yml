@@ -12,12 +12,12 @@ env:
   - CODECOV_TOKEN="ca591faa-0ff9-4bbc-a30b-e88fe7a6e8c5"
 before_install:
   - pip install -U pytest
-  - pip install --user codecov
+  - pip install  codecov
 install:
   - pip install pandas peewee matplotlib haversine
 script: 
-- pytest -v --cov=tests # run tests
+- pytest -v --cov=./ # run tests
 - coverage run 
 after_success:
-  - coveralls
-  -codecov --file coverage/lcov.info --disable search
+  
+  - codecov  
