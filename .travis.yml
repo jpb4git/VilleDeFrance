@@ -15,7 +15,9 @@ before_install:
   - pip install --user codecov
 install:
   - pip install pandas peewee matplotlib haversine
-script: pytest -v --cov=tests # run tests
+script: 
+- pytest -v --cov=tests # run tests
+- coverage run 
 after_success:
   - coveralls
   -codecov --file coverage/lcov.info --disable search
