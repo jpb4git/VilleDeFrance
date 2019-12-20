@@ -1,4 +1,4 @@
-# Ville De France [![Build Status](https://travis-ci.com/jpb4git/VilleDeFrance.svg?branch=master)](https://travis-ci.com/jpb4git/VilleDeFrance)
+# Ville De France [![Build Status](https://travis-ci.com/jpb4git/VilleDeFrance.svg?branch=master)](https://travis-ci.com/jpb4git/VilleDeFrance) [![codecov](https://codecov.io/gh/jpb4git/VilleDeFrance/branch/master/graph/badge.svg)](https://codecov.io/gh/jpb4git/VilleDeFrance)
 
 Projet  python 
 
