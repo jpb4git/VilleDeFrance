@@ -1,6 +1,7 @@
 from apps.router.app import setRoute
 
 
+
 def init():
     '''
     Launcher app  
