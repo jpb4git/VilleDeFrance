@@ -8,10 +8,9 @@ python:
   - 3.6
   - 3.7
 
-env:
-  - CODECOV_TOKEN="ca591faa-0ff9-4bbc-a30b-e88fe7a6e8c5"
+
 before_install:
-  - pip install -U pytest
+  - pip install -U pytest pytest-cov
   - pip install  codecov
 install:
   - pip install pandas peewee matplotlib haversine
