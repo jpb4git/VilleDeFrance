@@ -1,7 +1,7 @@
-from apps.school import school
-from apps.cities import cities
-from apps.utils import utils
-from apps.doctors import doctors
+from apps.school import app as school
+from apps.cities import app as cities
+from apps.utils import app as utils
+from apps.doctors import app as doctors
 import settings
 import pandas as pd 
 

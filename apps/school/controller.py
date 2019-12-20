@@ -1,9 +1,9 @@
 from connect.connect import db
 import settings
-from apps.school.school import read_highschools_csv_data, borough_concatenation_school, add_calculated_column  
+from apps.school.app import read_highschools_csv_data, borough_concatenation_school, add_calculated_column  
 from apps.school.model  import School
 from apps.cities.model  import City
-from apps.utils.utils import renameColDataframe, sort_cities_by_field
+from apps.utils.app import renameColDataframe, sort_cities_by_field
 import pandas as pd 
 from matplotlib import  pyplot
 

@@ -1,6 +1,6 @@
 import settings 
 import pandas as pd 
-from apps.cities import cities
+from apps.cities import app as cities
 import numpy as np 
 
 

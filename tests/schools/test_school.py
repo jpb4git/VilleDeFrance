@@ -1,6 +1,6 @@
-from apps.school import school
-from apps.cities import cities
-from apps.utils import utils
+from apps.school import app as school
+from apps.cities import app as cities
+from apps.utils import app as utils
 import settings
 import pandas as pd 
 

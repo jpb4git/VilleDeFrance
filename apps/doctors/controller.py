@@ -1,10 +1,10 @@
 from connect.connect import db
 import settings
 
-from apps.doctors import doctors
+from apps.doctors import app as doctors
 from apps.doctors.model  import Doctor
 from apps.cities.model  import City
-from apps.utils.utils import renameColDataframe, sort_cities_by_field
+from apps.utils.app import renameColDataframe, sort_cities_by_field
 import pandas as pd 
 from matplotlib import  pyplot
 
@@ -14,7 +14,7 @@ def import_doctors_csv_table():
     # import csv schools
     dfDoctors = doctors.read_doctors_csv_data(settings.PATH_CSV_FILE_DOCTORS)    
 
-    dfDoctors = doctors.add_calculated_column(dfDoctors)
+    dfDoctors = doctors.add_calculated_column(dfDoctors,'countDoctor')
 
     dataW = doctors.regroupDistrict(dfDoctors,'city')
     result = dataW.groupby(['city'] , as_index=False).sum()

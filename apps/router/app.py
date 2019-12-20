@@ -1,8 +1,8 @@
-from apps.utils import utils
+from apps.utils import app as utils
 import settings 
-from apps.cities import cities , controller as cityController
-from apps.school import school , controller as schoolController
-from apps.doctors import doctors , controller as doctorController
+from apps.cities import app as cities , controller as cityController
+from apps.school import app as school , controller as schoolController
+from apps.doctors import app as doctors , controller as doctorController
 from matplotlib import pyplot
 from peewee import *
 import argparse

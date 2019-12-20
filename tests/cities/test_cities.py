@@ -1,5 +1,5 @@
-from apps.cities import cities
-from apps.utils import utils
+from apps.cities import app as cities
+from apps.utils import app as utils
 import settings
 
 def test_csv_loading():

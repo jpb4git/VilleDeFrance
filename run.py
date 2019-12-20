@@ -1,4 +1,4 @@
-from apps.router.router import setRoute
+from apps.router.app import setRoute
 
 
 def init():

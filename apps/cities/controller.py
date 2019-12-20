@@ -1,8 +1,8 @@
 from connect.connect import db
 import settings
-from apps.cities.cities import read_cities_csv_data  
+from apps.cities.app import read_cities_csv_data  
 from apps.cities.model  import City
-from apps.utils.utils import renameColDataframe , sort_cities_by_field
+from apps.utils.app import renameColDataframe , sort_cities_by_field
 
 
 def import_csv_table(): 

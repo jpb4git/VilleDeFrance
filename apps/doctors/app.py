@@ -1,7 +1,7 @@
 import settings 
 import pandas as pd 
-from apps.cities import cities
-from apps.utils import utils
+from apps.cities import app as cities
+from apps.utils import app as utils
 import numpy as np 
 
 def read_doctors_csv_data(path):
